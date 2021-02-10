@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RngDrink</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="players_header">Players</string>
+
+    <!-- Messages Preferences -->
+    <string name="number_title">Starting Number</string>
+
+    <!-- Sync Preferences -->
+    <string name="main_header">Main Settings</string>
+    <string name="title_activity_main_menu">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">RNG Drinks</string>
+</resources>
