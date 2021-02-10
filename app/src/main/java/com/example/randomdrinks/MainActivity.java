@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         scale = AnimationUtils.loadAnimation(this, R.anim.scale);
     }
 
+    //When the button is clicked this function is called
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextRandom(final View view){
         view.startAnimation(scale);
@@ -67,32 +68,18 @@ public class MainActivity extends AppCompatActivity {
             lose_text.setVisibility(View.INVISIBLE);
             Button test = (Button)view;
             test.setText("Test your luck!");
-            reset();
+            current_random = prev_random = starting_number;
+            number_of_sips = 0;
+            current_percentage = 0f;
+            //Fill the glass on loss
+
         }
         else {
             SoundHandler.playSound(R.raw.pour);
             valid_click(view);
         }
-
-
     }
 
-    public void scaleView(View v, float startScale, float endScale, int delay) {
-        Animation anim = new ScaleAnimation(
-                1f, 1f, // Start and end values for the X axis scaling
-                startScale, endScale, // Start and end values for the Y axis scaling
-                Animation.RELATIVE_TO_SELF, 0f, // Pivot point of X scaling
-                Animation.RELATIVE_TO_SELF, 1f); // Pivot point of Y scaling
-        anim.setFillAfter(true); // Needed to keep the result of the animation
-        anim.setDuration(delay);
-        v.startAnimation(anim);
-    }
-
-    public void reset(){
-        current_random = prev_random = starting_number;
-        number_of_sips = 0;
-        current_percentage = 0f;
-    }
 
     public void valid_click(final View view){
         number_of_sips++;
@@ -105,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         }
          */
 
+        //Animating the numbers and background
         animator.setObjectValues(prev_random, current_random);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -113,12 +101,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Animating the numbers and background
         view.setEnabled(false);
         animator.setDuration(delay);
         animator.start(); //Numbers
         overlay.setVisibility(View.VISIBLE);
-        scaleView(overlay, current_percentage, 1f - (float) current_random/starting_number, delay); //Background
+        //If you end the game fill the screen
+        if(current_random == 1) scaleView(overlay, current_percentage, 1f, 1000); //Background
+        else scaleView(overlay, current_percentage, 1f - (float) current_random/starting_number, delay); //Background
         current_percentage = 1f - (float) current_random/starting_number;
 
         number_of_sips_text.setText("Number of sips: " + number_of_sips); // Setting the new text
@@ -149,6 +138,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             },delay);
         }
+    }
+
+    //Background animation (Filling the glass)
+    public void scaleView(View v, float startScale, float endScale, int delay) {
+        Animation anim = new ScaleAnimation(
+                1f, 1f, // Start and end values for the X axis scaling
+                startScale, endScale, // Start and end values for the Y axis scaling
+                Animation.RELATIVE_TO_SELF, 0f, // Pivot point of X scaling
+                Animation.RELATIVE_TO_SELF, 1f); // Pivot point of Y scaling
+        anim.setFillAfter(true); // Needed to keep the result of the animation
+        anim.setDuration(delay);
+        v.startAnimation(anim);
     }
 
 }
