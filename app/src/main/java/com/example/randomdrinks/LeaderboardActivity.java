@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-public class LeaderboardActivity extends AppCompatActivity {
+public class LeaderboardActivity extends GameActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

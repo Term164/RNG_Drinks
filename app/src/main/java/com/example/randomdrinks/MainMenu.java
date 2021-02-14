@@ -13,7 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends GameActivity {
 
     private final int ANIMATION_DELAY = 200;
 
@@ -114,6 +114,4 @@ public class MainMenu extends AppCompatActivity {
             }
         },ANIMATION_DELAY);
     }
-
-
 }

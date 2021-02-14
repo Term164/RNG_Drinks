@@ -50,4 +50,7 @@ public class SoundHandler {
         backgroundMusic.start();
     }
 
+    public static void pauseBackgroundMusic(){
+        backgroundMusic.pause();
+    }
 }

@@ -11,7 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
-public class SetupMenu extends AppCompatActivity {
+public class SetupMenu extends GameActivity {
 
     EditText numberOFPlayers, startingNumber;
     Animation scale;
