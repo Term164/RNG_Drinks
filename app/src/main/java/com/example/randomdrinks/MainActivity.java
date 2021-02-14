@@ -114,12 +114,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Check if a player has lost
         if (current_random == 1){
-            //Show all losing messages
-            end_message.setText(endMessages[(int)(Math.random()*endMessages.length + 1)]); //Set a random end message
-            end_message.setVisibility(View.VISIBLE);
-            lose_text.setVisibility(View.VISIBLE);
-            Button test = (Button)view;
-            test.setText("ANOTHER ROUND!");
+            //Show the lose text after the animations have finished
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //Show all losing messages
+                    end_message.setText(endMessages[(int)(Math.random()*endMessages.length + 1)]); //Set a random end message
+                    end_message.setVisibility(View.VISIBLE);
+                    lose_text.setVisibility(View.VISIBLE);
+                    Button test = (Button)view;
+                    test.setText("ANOTHER ROUND!");
+                }
+            }, delay);
 
             //Enable the button after 5 seconds
             new Handler().postDelayed(new Runnable() {
@@ -140,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //TODO: Make an animation handler class
     //Background animation (Filling the glass)
     public void scaleView(View v, float startScale, float endScale, int delay) {
         Animation anim = new ScaleAnimation(
