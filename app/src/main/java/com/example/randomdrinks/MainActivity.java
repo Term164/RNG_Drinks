@@ -19,7 +19,7 @@ import android.widget.TextView;
 import java.util.Objects;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends GameActivity {
 
     //End messages
     public String[] endMessages = {"Tough luck!", "Better luck next time!", "Bottoms up!", "Out of luck!", "Unfortunate!", "Hard luck!", "Drinking time!", "Yikes!", "Ouch!", "Bad break!", "Cheers!", "Down the hatch!", "Drink up!"};
