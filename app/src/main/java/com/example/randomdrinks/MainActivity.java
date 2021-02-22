@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,13 +22,11 @@ import java.util.Random;
 
 public class MainActivity extends GameActivity {
 
-    //End messages
-    public String[] endMessages = {"Tough luck!", "Better luck next time!", "Bottoms up!", "Out of luck!", "Unfortunate!", "Hard luck!", "Drinking time!", "Yikes!", "Ouch!", "Bad break!", "Cheers!", "Down the hatch!", "Drink up!"};
 
     //Variables
     public View overlay;
-    public TextView new_random_number_text,number_of_sips_text, end_message, lose_text;
-    private int number_of_sips = 0, prev_random, current_random, starting_number;
+    public TextView new_random_number_text,number_of_sips_text;
+    private int number_of_sips = 0, prev_random, current_random, starting_number, number_of_players;
     float current_percentage = 0f;
 
     Animation scale;
@@ -44,13 +43,12 @@ public class MainActivity extends GameActivity {
         //Hooks
         new_random_number_text = findViewById(R.id.new_random_text);
         number_of_sips_text = findViewById(R.id.sips_text);
-        end_message = findViewById(R.id.lose_message);
-        lose_text = findViewById(R.id.you_lose_text);
         overlay = findViewById(R.id.overlay);
         overlay.setVisibility(View.INVISIBLE);
 
         //Getting data from previous activity
         prev_random = Integer.parseInt(Objects.requireNonNull(getIntent().getStringExtra("STARTING_NUMBER")));
+        number_of_players = Integer.parseInt(Objects.requireNonNull(getIntent().getStringExtra("NUMBER_OF_PLAYERS")));
         current_random = starting_number = prev_random;
 
         //Animations
@@ -61,36 +59,32 @@ public class MainActivity extends GameActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextRandom(final View view){
         view.startAnimation(scale);
-        // If someone lost (current_random == 1) then on the next click reset the game
-        // Otherwise execute the normal code
-        if (current_random == 1){
-            end_message.setVisibility(View.INVISIBLE);
-            lose_text.setVisibility(View.INVISIBLE);
-            Button test = (Button)view;
-            test.setText("Test your luck!");
-            current_random = prev_random = starting_number;
-            number_of_sips = 0;
-            current_percentage = 0f;
-            //Fill the glass on loss
-
-        }
-        else {
-            SoundHandler.playSound(R.raw.pour);
-            valid_click(view);
-        }
+        SoundHandler.playSound(R.raw.pour);
+        valid_click(view);
     }
 
 
     public void valid_click(final View view){
-        number_of_sips++;
+
         prev_random = current_random;
         current_random = random.nextInt(current_random)+1;
+        //Less randomization
+        if (number_of_sips == number_of_players && current_random == 1){
+            System.out.println("second chance");
+            if (Math.random() <= 0.1){
+                System.out.println("Nice");
+                current_random = random.nextInt(prev_random)+1;
+            }
+        }
+
+        number_of_sips++;
 
         int delay = 1500;
-        /*if (prev_random < 10){
-            delay = prev_random * 100;
-        }
-         */
+        if(prev_random == current_random) delay = 300;
+        else if(prev_random - current_random < 20) delay = 1000;
+
+
+        System.out.println(delay);
 
         //Animating the numbers and background
         animator.setObjectValues(prev_random, current_random);
@@ -119,11 +113,16 @@ public class MainActivity extends GameActivity {
                 @Override
                 public void run() {
                     //Show all losing messages
-                    end_message.setText(endMessages[(int)(Math.random()*endMessages.length + 1)]); //Set a random end message
-                    end_message.setVisibility(View.VISIBLE);
-                    lose_text.setVisibility(View.VISIBLE);
-                    Button test = (Button)view;
-                    test.setText("ANOTHER ROUND!");
+                    Intent i = new Intent(getApplicationContext(), PopActivity.class);
+                    i.putExtra("NUMBER_OF_SIPS", number_of_sips);
+                    startActivity(i);
+
+                    //Reset the values
+                    current_random = prev_random = starting_number;
+                    new_random_number_text.setText("" + starting_number);
+                    number_of_sips_text.setText("" + 0);
+                    number_of_sips = 0;
+                    current_percentage = 0f;
                 }
             }, delay);
 

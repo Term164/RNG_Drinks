@@ -74,30 +74,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
-    <TextView
-        android:id="@+id/lose_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/custom_font"
-        android:text="Tough luck!"
-        android:textSize="30sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sips_text" />
-
-    <TextView
-        android:id="@+id/you_lose_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/custom_font"
-        android:text="YOU LOSE!"
-        android:textSize="50sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/sips_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_random_text" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
