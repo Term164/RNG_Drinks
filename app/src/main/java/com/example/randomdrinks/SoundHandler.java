@@ -18,7 +18,7 @@ public class SoundHandler {
 
     //sound control variables
     public static boolean musicMuted = false;
-    public static boolean effectsMuted = false;
+    public static boolean soundMuted = false;
     public static float volume = 1f;
 
     //sound classes
@@ -37,7 +37,7 @@ public class SoundHandler {
     }
 
     public static void playSound(int soundID){
-        if (!effectsMuted){
+        if (!soundMuted){
             soundPool.play((int)soundPoolMap.get(soundID), volume, volume, 1,0,1f);
         }
     }
@@ -47,7 +47,9 @@ public class SoundHandler {
     }
 
     public static void playBackgroundMusic(){
-        backgroundMusic.start();
+        if (!musicMuted){
+            backgroundMusic.start();
+        }
     }
 
     public static void pauseBackgroundMusic(){
