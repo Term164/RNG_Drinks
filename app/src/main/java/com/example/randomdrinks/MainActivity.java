@@ -1,11 +1,10 @@
 package com.example.randomdrinks;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +13,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Objects;
@@ -28,6 +26,7 @@ public class MainActivity extends GameActivity {
     public TextView new_random_number_text,number_of_sips_text;
     private int number_of_sips = 0, prev_random, current_random, starting_number, number_of_players;
     float current_percentage = 0f;
+    public String[] endMessages = {"Tough luck!", "Better luck next time!", "Bottoms up!", "Out of luck!", "Unfortunate!", "Hard luck!", "Drinking time!", "Yikes!", "Ouch!", "Bad break!", "Cheers!", "Down the hatch!", "Drink up!"};
 
     Animation scale;
 
@@ -42,7 +41,7 @@ public class MainActivity extends GameActivity {
 
         //Hooks
         new_random_number_text = findViewById(R.id.new_random_text);
-        number_of_sips_text = findViewById(R.id.sips_text);
+        number_of_sips_text = findViewById(R.id.Sub_message);
         overlay = findViewById(R.id.overlay);
         overlay.setVisibility(View.INVISIBLE);
 
@@ -64,27 +63,33 @@ public class MainActivity extends GameActivity {
     }
 
 
-    public void valid_click(final View view){
+    private void valid_click(final View view){
 
         prev_random = current_random;
         current_random = random.nextInt(current_random)+1;
-        //Less randomization
+
+        //custom randomization
+        //Currently if
+        System.out.println(number_of_sips + " | " + number_of_players);
         if (number_of_sips == number_of_players && current_random == 1){
             System.out.println("second chance");
-            if (Math.random() <= 0.1){
-                System.out.println("Nice");
-                current_random = random.nextInt(prev_random)+1;
+            if (Math.random() >= 0.1){
+                do {
+                    current_random = random.nextInt(prev_random)+1;
+                }while (current_random == 1);
+                System.out.println("nice");
             }
         }
 
         number_of_sips++;
+
 
         int delay = 1500;
         if(prev_random == current_random) delay = 300;
         else if(prev_random - current_random < 20) delay = 1000;
 
 
-        System.out.println(delay);
+        //System.out.println(delay);
 
         //Animating the numbers and background
         animator.setObjectValues(prev_random, current_random);
@@ -112,10 +117,7 @@ public class MainActivity extends GameActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    //Show all losing messages
-                    Intent i = new Intent(getApplicationContext(), PopActivity.class);
-                    i.putExtra("NUMBER_OF_SIPS", number_of_sips);
-                    startActivity(i);
+                    createPopup("YOU LOSE!", "You have "+ number_of_sips + " sips", endMessages[(int)(Math.random()*endMessages.length)], "ANOTHER ROUND!");
 
                     //Reset the values
                     current_random = prev_random = starting_number;

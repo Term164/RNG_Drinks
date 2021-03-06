@@ -36,9 +36,15 @@ public class SetupMenu extends GameActivity {
     public void beginGame(View view){
         SoundHandler.playSound(R.raw.button_push);
         view.startAnimation(scale);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("NUMBER_OF_PLAYERS", numberOFPlayers.getText().toString());
-        intent.putExtra("STARTING_NUMBER", startingNumber.getText().toString());
-        startActivity(intent);
+        String num_Of_Players = numberOFPlayers.getText().toString();
+        String starting_number = startingNumber.getText().toString();
+        if (Integer.parseInt(num_Of_Players) >= 2 && Integer.parseInt(starting_number) >= 2){
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("NUMBER_OF_PLAYERS", num_Of_Players);
+            intent.putExtra("STARTING_NUMBER", starting_number);
+            startActivity(intent);
+        } else{
+            createPopup("Ooops!", "Wrong numbers entered", "Please choose numbers above 2", "Close");
+        }
     }
 }

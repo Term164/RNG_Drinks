@@ -1,8 +1,5 @@
 package com.example.randomdrinks;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -11,38 +8,51 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Objects;
-
 public class PopActivity extends GameActivity {
+    private String message1, message2, message3, buttonText;
 
-    //End messages
-    public String[] endMessages = {"Tough luck!", "Better luck next time!", "Bottoms up!", "Out of luck!", "Unfortunate!", "Hard luck!", "Drinking time!", "Yikes!", "Ouch!", "Bad break!", "Cheers!", "Down the hatch!", "Drink up!"};
-    public TextView end_message, sips_text;
-    int number_of_sips;
-
-    Button close_btn;
+    /**
+     * Creates a new popup activity with custom
+     * Strings as input.
+     *
+     * @author Jani Bangiev
+     * @since 06/03/2021
+     * message1 the title of the popup, takes a {@code String} value
+     * message2 the smaller text under the title, takes a {@code String} value
+     * message3 Optional text that can be displayed, takes a {@code String} value
+     * buttonText The text that is displayed on the button, takes a {@code String} value
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop);
 
+        String message1 = getIntent().getStringExtra("TITLE_TEXT");
+        String message2 = getIntent().getStringExtra("SUB_TEXT");
+        String message3 = getIntent().getStringExtra("OPTIONAL_TEXT");
+        String buttonText = getIntent().getStringExtra("BUTTON_TEXT");
+
+        TextView tittleMessage, subMessage, optionalMessage;
+        Button button;
+
         //Hooks
-        end_message = findViewById(R.id.endMessage);
-        sips_text = findViewById(R.id.sips_text);
+        tittleMessage = findViewById(R.id.Title_Message);
+        subMessage = findViewById(R.id.Sub_message);
+        optionalMessage = findViewById(R.id.Optional_message);
+        button = findViewById(R.id.close_btn);
 
-        //Getting data from the previous activity
-        number_of_sips = getIntent().getIntExtra("NUMBER_OF_SIPS", 0);
-
-        //Moving the window
+        //Getting the screen size
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
+        //Setting the popup size
         getWindow().setLayout((int)(width*.8), (int) (height*.3));
 
+        //Setting the popup position
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
@@ -51,18 +61,17 @@ public class PopActivity extends GameActivity {
         getWindow().setAttributes(params);
 
         //setting the text
-        end_message.setText(endMessages[(int)(Math.random()*endMessages.length)]);
-        sips_text.setText("You have "+ number_of_sips +" sips");
+        tittleMessage.setText(message1);
+        subMessage.setText(message2);
+        optionalMessage.setText(message3);
+        button.setText(buttonText);
 
         //Setting the close button
-        close_btn = (Button) findViewById(R.id.close_btn);
-        close_btn.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-
     }
 }
