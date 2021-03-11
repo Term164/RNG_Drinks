@@ -120,7 +120,7 @@ public class GameActivity extends AppCompatActivity {
         currentLanguage = language;
         setLocale(language);
     }
-    
+
     protected void refreshLayout(int layout){
         setContentView(layout);
     }

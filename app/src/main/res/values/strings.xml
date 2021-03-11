@@ -12,7 +12,7 @@
     <!--Game activity text -->
     <string name="your_number">Your number is:</string>
     <string name="num_of_sips">Number of sips: </string>
-    <string name="roll_button">Test your luck!</string>
+    <string name="roll_button">Roll number</string>
     <!--Popup activity text -->
     <string name="popup_title">YOU LOSE!</string>
     <string name="popup_sips">you have n sips</string>

@@ -33,13 +33,13 @@
 
     <TextView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
+        android:layout_width="413dp"
+        android:layout_height="134dp"
+        android:layout_marginBottom="136dp"
         android:fontFamily="@font/custom_font"
         android:gravity="center"
         android:text="RNG Drinks"
-        android:textSize="60sp"
+        android:textSize="80sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="@+id/overlay"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,12 +50,13 @@
         android:id="@+id/developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/custom_font"
         android:text="@string/developer"
-        android:textSize="18sp"
+        android:textSize="25sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 

@@ -14,7 +14,7 @@
         android:layout_marginTop="60dp"
         android:fontFamily="@font/custom_font"
         android:text="@string/achievements_title"
-        android:textSize="35sp"
+        android:textSize="50sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,11 +27,11 @@
         android:fontFamily="@font/custom_font"
         android:text="@string/coming_soon"
         android:textAlignment="center"
-        android:textSize="50sp"
+        android:textSize="80sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

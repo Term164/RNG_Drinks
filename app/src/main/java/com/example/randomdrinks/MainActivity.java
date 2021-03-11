@@ -148,7 +148,6 @@ public class MainActivity extends GameActivity {
         }
     }
 
-    //TODO: Make an animation handler class
     //Background animation (Filling the glass)
     public void scaleView(View v, float startScale, float endScale, int delay) {
         Animation anim = new ScaleAnimation(

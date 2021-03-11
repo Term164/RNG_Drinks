@@ -13,7 +13,7 @@
     <!--Game activity text -->
     <string name="your_number">Vaše Število je:</string>
     <string name="num_of_sips">Število požirkov: </string>
-    <string name="roll_button">preizkusite svojo srečo!</string>
+    <string name="roll_button">Naslednja številka</string>
     <!--Popup activity text -->
     <string name="popup_title">IZGUBILI STE!</string>
     <string name="popup_sips">Imate n požirkov</string>
@@ -30,9 +30,9 @@
 
     <!--=========================== SETTINGS MENU ============================ -->
     <string name="settings_title">Nastavitve</string>
-    <string name="music_on">MUSIC ON</string>
-    <string name="music_off">MUSIC OFF</string>
-    <string name="sound_on">SOUND ON</string>
-    <string name="sound_off">SOUND OFF</string>
+    <string name="music_on">GLASBA ON</string>
+    <string name="music_off">GLASBA OFF</string>
+    <string name="sound_on">ZVOK ON</string>
+    <string name="sound_off">ZVOK OFF</string>
 
 </resources>
