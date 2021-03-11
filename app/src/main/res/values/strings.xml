@@ -1,16 +1,37 @@
 <resources>
     <string name="app_name">RNG Drinks</string>
-    <string name="title_activity_settings">Settings</string>
+    <!--=========================== MAIN MENU ============================ -->
+    <!--Main menu buttons -->
+    <string name="play_button">Play!</string>
+    <string name="settings_button">SETTINGS</string>
+    <string name="achievements_button">ACHIEVEMENTS</string>
+    <string name="exit_button">EXIT</string>
+    <string name="developer">Developed by Big Sad Studio</string>
 
-    <!-- Preference Titles -->
-    <string name="players_header">Players</string>
+    <!--=========================== GAME ACTIVITY ============================ -->
+    <!--Game activity text -->
+    <string name="your_number">Your number is:</string>
+    <string name="num_of_sips">Number of sips: </string>
+    <string name="roll_button">Test your luck!</string>
+    <!--Popup activity text -->
+    <string name="popup_title">YOU LOSE!</string>
+    <string name="popup_sips">you have n sips</string>
+    <string name="lose_button_text">Another round!</string>
 
-    <!-- Messages Preferences -->
-    <string name="number_title">Starting Number</string>
+    <!--=========================== SETUP MENU ============================ -->
+    <string name="num_of_players">Number of players:</string>
+    <string name="starting_number">Starting number:</string>
+    <string name="setup_button">Begin!</string>
 
-    <!-- Sync Preferences -->
-    <string name="main_header">Main Settings</string>
-    <string name="title_activity_main_menu">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">RNG Drinks</string>
+    <!--=========================== ACHIEVEMENTS MENU ============================ -->
+    <string name="achievements_title">ACHIEVEMENTS</string>
+    <string name="coming_soon">COMING SOON!</string>
+
+    <!--=========================== SETTINGS MENU ============================ -->
+    <string name="settings_title">Settings</string>
+    <string name="music_on">MUSIC ON</string>
+    <string name="music_off">MUSIC OFF</string>
+    <string name="sound_on">SOUND ON</string>
+    <string name="sound_off">SOUND OFF</string>
+
 </resources>

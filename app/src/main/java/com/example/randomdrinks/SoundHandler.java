@@ -10,20 +10,20 @@ import java.util.HashMap;
 public class SoundHandler {
 
     //Getting sound ID's
-    public static final int buttonClick = R.raw.button_push;
-    public static final int pourEffect = R.raw.pour;
-    public static MediaPlayer intro;
-    public static MediaPlayer backgroundMusic;
+    private static final int buttonClick = R.raw.button_push;
+    private static final int pourEffect = R.raw.pour;
+    private static MediaPlayer intro;
+    private static MediaPlayer backgroundMusic;
 
 
     //sound control variables
-    public static boolean musicMuted = false;
-    public static boolean soundMuted = false;
-    public static float volume = 1f;
+    private static boolean musicMuted = false;
+    private static boolean soundMuted = false;
+    private static float volume = 1f;
 
     //sound classes
     private static SoundPool soundPool;
-    private static HashMap soundPoolMap;
+    private static HashMap<Integer, Integer> soundPoolMap;
 
     public static void loadSounds(Context context){
         intro = MediaPlayer.create(context, R.raw.intro);
@@ -31,14 +31,14 @@ public class SoundHandler {
 
         AudioAttributes attributes = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build();
         soundPool = new SoundPool.Builder().setAudioAttributes(attributes).build();
-        soundPoolMap = new HashMap(2);
+        soundPoolMap = new HashMap<>(2);
         soundPoolMap.put(buttonClick, soundPool.load(context, R.raw.button_push, 1));
         soundPoolMap.put(pourEffect, soundPool.load(context, R.raw.pour,2));
     }
 
     public static void playSound(int soundID){
         if (!soundMuted){
-            soundPool.play((int)soundPoolMap.get(soundID), volume, volume, 1,0,1f);
+            soundPool.play(soundPoolMap.get(soundID), volume, volume, 1,0,1f);
         }
     }
 
@@ -54,5 +54,23 @@ public class SoundHandler {
 
     public static void pauseBackgroundMusic(){
         backgroundMusic.pause();
+    }
+
+    // =========================== GETTERS AND SETTERS ==============================
+
+    public static boolean isMusicMuted() {
+        return musicMuted;
+    }
+
+    public static void setMusicMuted(boolean musicMuted) {
+        SoundHandler.musicMuted = musicMuted;
+    }
+
+    public static boolean isSoundMuted() {
+        return soundMuted;
+    }
+
+    public static void setSoundMuted(boolean soundMuted) {
+        SoundHandler.soundMuted = soundMuted;
     }
 }

@@ -13,7 +13,7 @@
             android:name=".PopActivity"
             android:theme="@style/AppTheme.PopMe" />
         <activity
-            android:name=".LeaderboardActivity"
+            android:name=".AchievementsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SetupMenu"
@@ -32,7 +32,6 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"

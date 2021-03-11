@@ -20,7 +20,8 @@ public class SetupMenu extends GameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_setup_menu);
+        layout = R.layout.activity_setup_menu;
+        setContentView(layout);
 
         //hooks
         numberOFPlayers = findViewById(R.id.number_of_players);

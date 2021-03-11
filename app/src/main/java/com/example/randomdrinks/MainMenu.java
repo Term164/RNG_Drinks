@@ -1,9 +1,6 @@
 package com.example.randomdrinks;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -20,44 +17,36 @@ public class MainMenu extends GameActivity {
     //variables
     TextView title,developer;
     Button playButton, settingsButton, leaderboardButton, exitButton;
-    Animation topAnimation, leftAnimation1, leftAnimation2, leftAnimation3, leftAnimation4, bottomAnimation, scale;
+    AnimationHandler animationHandler;
+    Animation scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main_menu);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        layout = R.layout.activity_main_menu;
+        setContentView(layout);
         SoundHandler.playBackgroundMusic();
 
-        //Animations
-        topAnimation = AnimationUtils.loadAnimation(this, R.anim.top_animation);
-        bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
-        leftAnimation1 = AnimationUtils.loadAnimation(this, R.anim.left_animation);
-        leftAnimation2 = AnimationUtils.loadAnimation(this, R.anim.left_animation);
-        leftAnimation3 = AnimationUtils.loadAnimation(this, R.anim.left_animation);
-        leftAnimation4 = AnimationUtils.loadAnimation(this, R.anim.left_animation);
+        //Animation handler
+        animationHandler = new AnimationHandler(this);
 
         scale = AnimationUtils.loadAnimation(this, R.anim.scale);
-
-        leftAnimation1.setDuration(1500);
-        leftAnimation2.setDuration(2000);
-        leftAnimation3.setDuration(2500);
-        leftAnimation4.setDuration(3000);
 
         //Hooks
         title = findViewById(R.id.Title);
         developer = findViewById(R.id.developer);
         playButton = findViewById(R.id.play_button);
         settingsButton = findViewById(R.id.settings_button);
-        leaderboardButton = findViewById(R.id.leaderboard_button);
+        leaderboardButton = findViewById(R.id.achievements_button);
         exitButton = findViewById(R.id.exit_button);
 
-        title.setAnimation(topAnimation);
-        playButton.setAnimation(leftAnimation1);
-        settingsButton.setAnimation(leftAnimation2);
-        leaderboardButton.setAnimation(leftAnimation3);
-        exitButton.setAnimation(leftAnimation4);
-        developer.setAnimation(bottomAnimation);
+        animationHandler.animate(title, R.anim.top_animation);
+        animationHandler.animate(developer, R.anim.bottom_animation);
+        animationHandler.animate(playButton, R.anim.left_animation, 1500);
+        animationHandler.animate(settingsButton, R.anim.left_animation, 2000);
+        animationHandler.animate(leaderboardButton, R.anim.left_animation, 2500);
+        animationHandler.animate(exitButton, R.anim.left_animation, 3000);
     }
 
     //Start a new instance of the game with the saved settings
@@ -95,7 +84,7 @@ public class MainMenu extends GameActivity {
             @Override
             public void run() {
                 view.setAnimation(null);
-                Intent intent = new Intent(MainMenu.this, LeaderboardActivity.class);
+                Intent intent = new Intent(MainMenu.this, AchievementsActivity.class);
                 startActivity(intent);
             }
         },ANIMATION_DELAY);

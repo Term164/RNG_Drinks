@@ -3,7 +3,6 @@ package com.example.randomdrinks;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -22,9 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView logo, developer;
-    public View overlay;
-
-    //MediaPlayer intro;
+    View overlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,6 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         SoundHandler.loadSounds(this);
-       //intro = MediaPlayer.create(, R.raw.intro);
 
         //Animations
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);

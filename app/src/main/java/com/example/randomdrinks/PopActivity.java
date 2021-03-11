@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class PopActivity extends GameActivity {
-    private String message1, message2, message3, buttonText;
 
     /**
      * Creates a new popup activity with custom
@@ -50,7 +49,7 @@ public class PopActivity extends GameActivity {
         int height = dm.heightPixels;
 
         //Setting the popup size
-        getWindow().setLayout((int)(width*.8), (int) (height*.3));
+        getWindow().setLayout((int)(width*.8), (int) (height*.35));
 
         //Setting the popup position
         WindowManager.LayoutParams params = getWindow().getAttributes();

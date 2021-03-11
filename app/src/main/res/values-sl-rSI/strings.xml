@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RNG Drinks</string>
+    <!--=========================== MAIN MENU ============================ -->
+    <!--Main menu buttons -->
+    <string name="play_button">ZAČNI!</string>
+    <string name="settings_button">NASTAVITVE</string>
+    <string name="achievements_button">DOSEŽKI</string>
+    <string name="exit_button">IZHOD</string>
+    <string name="developer">Ustvaril Big Sad Studio</string>
+
+    <!--=========================== GAME ACTIVITY ============================ -->
+    <!--Game activity text -->
+    <string name="your_number">Vaše Število je:</string>
+    <string name="num_of_sips">Število požirkov: </string>
+    <string name="roll_button">preizkusite svojo srečo!</string>
+    <!--Popup activity text -->
+    <string name="popup_title">IZGUBILI STE!</string>
+    <string name="popup_sips">Imate n požirkov</string>
+    <string name="lose_button_text">Nova igra!</string>
+
+    <!--=========================== SETUP MENU ============================ -->
+    <string name="num_of_players">Število igralcev:</string>
+    <string name="starting_number">Začetna številka:</string>
+    <string name="setup_button">Začni!</string>
+
+    <!--=========================== ACHIEVEMENTS MENU ============================ -->
+    <string name="achievements_title">DOSEŽKI</string>
+    <string name="coming_soon">prihaja kmalu!</string>
+
+    <!--=========================== SETTINGS MENU ============================ -->
+    <string name="settings_title">Nastavitve</string>
+    <string name="music_on">MUSIC ON</string>
+    <string name="music_off">MUSIC OFF</string>
+    <string name="sound_on">SOUND ON</string>
+    <string name="sound_off">SOUND OFF</string>
+
+</resources>
