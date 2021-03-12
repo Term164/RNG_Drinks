@@ -14,7 +14,7 @@ import android.widget.EditText;
 public class SetupMenu extends GameActivity {
 
     EditText numberOFPlayers, startingNumber;
-    Animation scale;
+    AnimationHandler animationHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class SetupMenu extends GameActivity {
         startingNumber = findViewById(R.id.starting_number);
 
         //Animations
-        scale = AnimationUtils.loadAnimation(this,R.anim.scale);
+        animationHandler = new AnimationHandler(this);
 
     }
 
@@ -36,16 +36,32 @@ public class SetupMenu extends GameActivity {
     //Starts a new instance of the game
     public void beginGame(View view){
         SoundHandler.playSound(R.raw.button_push);
-        view.startAnimation(scale);
+        animationHandler.buttonPressAnimation(view);
+
         String num_Of_Players = numberOFPlayers.getText().toString();
         String starting_number = startingNumber.getText().toString();
-        if (Integer.parseInt(num_Of_Players) >= 2 && Integer.parseInt(starting_number) >= 2){
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("NUMBER_OF_PLAYERS", num_Of_Players);
-            intent.putExtra("STARTING_NUMBER", starting_number);
-            startActivity(intent);
-        } else{
-            createPopup("Ooops!", "Wrong numbers entered", "Please choose numbers above 2", "Close");
+        try {
+            if (Integer.parseInt(num_Of_Players) >= 2 && Integer.parseInt(num_Of_Players) <= 50){
+                if (Integer.parseInt(starting_number) >= 2 && Integer.parseInt(starting_number) <= 1000000){
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("NUMBER_OF_PLAYERS", num_Of_Players);
+                    intent.putExtra("STARTING_NUMBER", starting_number);
+                    startActivity(intent);
+                }else {
+                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4);
+                }
+            }else {
+                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4);
+            }
+        }catch (Exception e){
+            createPopup(R.string.error_title, R.string.error_type,R.string.error_button);
         }
+
+    }
+
+    @Override
+    public void back(View view) {
+        animationHandler.buttonPressAnimation(view);
+        super.back(view);
     }
 }

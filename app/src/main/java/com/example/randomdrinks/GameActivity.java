@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         // Load the selected language
         loadLocale();
         // Make the app fullscreen
@@ -78,7 +80,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     //Creates a popup Activity with all the messages
-    protected void createPopup(String message1, String message2, String message3, String buttonText){
+    protected void createPopup(int message1, int message2, int message3, int buttonText){
         Intent i = new Intent(getApplicationContext(), PopActivity.class);
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
@@ -87,12 +89,23 @@ public class GameActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    // Creates a popup Activity without the optional message
-    protected void createPopup(String message1, String message2, String buttonText){
+    //Creates a popup Activity with all the messages
+    protected void createPopup(int message1, int message2, int message3, int buttonText, double width, double height){
         Intent i = new Intent(getApplicationContext(), PopActivity.class);
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
-        i.putExtra("OPTIONAL_TEXT", "");
+        i.putExtra("OPTIONAL_TEXT", message3);
+        i.putExtra("BUTTON_TEXT", buttonText);
+        i.putExtra("WIDTH", width);
+        i.putExtra("HEIGHT", height);
+        startActivity(i);
+    }
+
+    // Creates a popup Activity without the optional message
+    protected void createPopup(int message1, int message2, int buttonText){
+        Intent i = new Intent(getApplicationContext(), PopActivity.class);
+        i.putExtra("TITLE_TEXT", message1);
+        i.putExtra("SUB_TEXT", message2);
         i.putExtra("BUTTON_TEXT", buttonText);
         startActivity(i);
     }
@@ -123,6 +136,18 @@ public class GameActivity extends AppCompatActivity {
 
     protected void refreshLayout(int layout){
         setContentView(layout);
+    }
+
+    public void back(final View view){
+        SoundHandler.playSound(R.raw.button_push);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                view.setAnimation(null);
+                finish();
+            }
+        },200);
+
     }
 
 }

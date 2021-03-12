@@ -23,4 +23,9 @@ public class AnimationHandler {
         Animation animation = AnimationUtils.loadAnimation(context, animationNumber);
         view.setAnimation(animation);
     }
+
+    public void buttonPressAnimation(View view){
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale);
+        view.startAnimation(animation);
+    }
 }

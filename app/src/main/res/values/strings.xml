@@ -29,9 +29,15 @@
 
     <!--=========================== SETTINGS MENU ============================ -->
     <string name="settings_title">Settings</string>
-    <string name="music_on">MUSIC ON</string>
-    <string name="music_off">MUSIC OFF</string>
-    <string name="sound_on">SOUND ON</string>
-    <string name="sound_off">SOUND OFF</string>
+    <string name="music_on">MUSIC</string>
+    <string name="music_off">MUSIC</string>
+    <string name="sound_on">SOUND</string>
+    <string name="sound_off">SOUND</string>
+    <string name="error_title">Ooops!</string>
+    <string name="error_type">Number error</string>
+    <string name="player_error">Please enter a number between 2 and 50 for the player field</string>
+    <string name="number_error">Please enter a number between 2 and a million for the starting number</string>
+    <string name="error_button">Close</string>
+    <string name="empty_string"></string>
 
 </resources>

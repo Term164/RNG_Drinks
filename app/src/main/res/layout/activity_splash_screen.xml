@@ -19,44 +19,44 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="241dp"
-        android:layout_height="549dp"
-        android:layout_marginBottom="232dp"
+        android:layout_width="241sp"
+        android:layout_height="549sp"
+        android:layout_marginBottom="144dp"
         android:rotation="30"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent">
 
     </ImageView>
 
     <TextView
         android:id="@+id/logo"
-        android:layout_width="413dp"
-        android:layout_height="134dp"
-        android:layout_marginBottom="136dp"
+        android:layout_width="321dp"
+        android:layout_height="144dp"
+        android:layout_marginBottom="68dp"
         android:fontFamily="@font/custom_font"
         android:gravity="center"
         android:text="RNG Drinks"
+        android:textAlignment="center"
         android:textSize="80sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="@+id/overlay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/custom_font"
         android:text="@string/developer"
+        android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 

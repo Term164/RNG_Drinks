@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/Sub_message"
-        android:layout_width="360dp"
-        android:layout_height="47dp"
+        android:layout_width="318dp"
+        android:layout_height="45dp"
         android:fontFamily="@font/custom_font"
         android:text="@string/popup_sips"
         android:textAlignment="center"
@@ -39,22 +39,22 @@
 
     <TextView
         android:id="@+id/Optional_message"
-        android:layout_width="379dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="300dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/custom_font"
+        android:lineSpacingExtra="10sp"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="25sp"
-        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/close_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Title_Message"
-        android:layout_width="360dp"
-        android:layout_height="59dp"
+        android:layout_width="319dp"
+        android:layout_height="54dp"
         android:fontFamily="@font/custom_font"
         android:text="@string/popup_title"
         android:textAlignment="center"

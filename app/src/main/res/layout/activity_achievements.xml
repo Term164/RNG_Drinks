@@ -7,6 +7,20 @@
     android:background="#f28e1c"
     tools:context=".AchievementsActivity">
 
+    <Button
+        android:id="@+id/sl3"
+        android:layout_width="77dp"
+        android:layout_height="73dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/ic_baseline_arrow_circle_down_24"
+        android:onClick="back"
+        android:rotation="90"
+        android:textColor="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/Title"
         android:layout_width="wrap_content"

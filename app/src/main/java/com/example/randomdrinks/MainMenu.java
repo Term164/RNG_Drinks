@@ -18,7 +18,6 @@ public class MainMenu extends GameActivity {
     TextView title,developer;
     Button playButton, settingsButton, leaderboardButton, exitButton;
     AnimationHandler animationHandler;
-    Animation scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,6 @@ public class MainMenu extends GameActivity {
 
         //Animation handler
         animationHandler = new AnimationHandler(this);
-
-        scale = AnimationUtils.loadAnimation(this, R.anim.scale);
 
         //Hooks
         title = findViewById(R.id.Title);
@@ -52,7 +49,7 @@ public class MainMenu extends GameActivity {
     //Start a new instance of the game with the saved settings
     public void startGame(final View view){
         SoundHandler.playSound(R.raw.button_push);
-        view.startAnimation(scale);
+        animationHandler.buttonPressAnimation(view);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -66,7 +63,7 @@ public class MainMenu extends GameActivity {
     //Open the settings window
     public void openSettings(final View view){
         SoundHandler.playSound(R.raw.button_push);
-        view.startAnimation(scale);
+        animationHandler.buttonPressAnimation(view);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -77,9 +74,10 @@ public class MainMenu extends GameActivity {
         },ANIMATION_DELAY);
     }
 
+    // TODO: Rename function to openAchievements
     public void openLeaderboard(final View view){
         SoundHandler.playSound(R.raw.button_push);
-        view.startAnimation(scale);
+        animationHandler.buttonPressAnimation(view);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -93,7 +91,7 @@ public class MainMenu extends GameActivity {
     //Close the application
     public void exit(final View view){
         SoundHandler.playSound(R.raw.button_push);
-        view.startAnimation(scale);
+        animationHandler.buttonPressAnimation(view);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

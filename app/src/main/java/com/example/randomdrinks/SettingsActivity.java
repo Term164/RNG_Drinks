@@ -1,6 +1,7 @@
 package com.example.randomdrinks;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -10,12 +11,16 @@ public class SettingsActivity extends GameActivity {
 
     private TextView musicText, soundText;
     private Button musicButton, soundButton;
+    AnimationHandler animationHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         layout = R.layout.settings_activity;
         setContentView(layout);
+
+        animationHandler = new AnimationHandler(this);
 
         // Hooks
         hook();
@@ -25,29 +30,36 @@ public class SettingsActivity extends GameActivity {
         musicCheck();
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
     //Change the language of the whole app
-    public void changeLanguage(View view){
-        String lang = ((Button) view).getText().toString();
-        setLocale(lang);
-        refreshLayout(layout);
-        // We have to reestablish the hooks after we draw the new layout
-        hook();
+    public void changeLanguage(final View view){
+        SoundHandler.playSound(R.raw.button_push);
+        animationHandler.buttonPressAnimation(view);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                String lang = ((Button) view).getText().toString();
+                setLocale(lang);
+                refreshLayout(layout);
+                // We have to reestablish the hooks after we draw the new layout
+                hook();
+                soundCheck();
+                musicCheck();
+            }
+        },200);
     }
 
     //Mutes or un mutes music depending on the current state
     public void musicClicked(View view){
+        SoundHandler.playSound(R.raw.button_push);
+        animationHandler.buttonPressAnimation(view);
         SoundHandler.setMusicMuted(!SoundHandler.isMusicMuted());
         musicCheck();
     }
 
     //Mutes or un mutes sounds depending on the current state
     public void soundClicked(View view){
+        SoundHandler.playSound(R.raw.button_push);
+        animationHandler.buttonPressAnimation(view);
         SoundHandler.setSoundMuted(!SoundHandler.isSoundMuted());
         soundCheck();
     }
@@ -83,5 +95,11 @@ public class SettingsActivity extends GameActivity {
             soundButton.setBackgroundResource(R.drawable.volume_on);
             soundText.setText(R.string.sound_on);
         }
+    }
+
+    @Override
+    public void back(View view) {
+        animationHandler.buttonPressAnimation(view);
+        super.back(view);
     }
 }

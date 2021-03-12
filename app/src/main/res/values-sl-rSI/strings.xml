@@ -30,9 +30,15 @@
 
     <!--=========================== SETTINGS MENU ============================ -->
     <string name="settings_title">Nastavitve</string>
-    <string name="music_on">GLASBA ON</string>
-    <string name="music_off">GLASBA OFF</string>
-    <string name="sound_on">ZVOK ON</string>
-    <string name="sound_off">ZVOK OFF</string>
+    <string name="music_on">GLASBA</string>
+    <string name="music_off">GLASBA</string>
+    <string name="sound_on">ZVOK</string>
+    <string name="sound_off">ZVOK</string>
+    <string name="error_title">Upsss!</string>
+    <string name="error_type">Napačne številke</string>
+    <string name="player_error">Vpišite število med 2 in 50 za igralce</string>
+    <string name="number_error">Vpišite števlio med 2 in milijon za začetno število</string>
+    <string name="error_button">Zapri</string>
+    <string name="empty_string">" "</string>
 
 </resources>

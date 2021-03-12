@@ -28,7 +28,7 @@ public class MainActivity extends GameActivity {
     float current_percentage = 0f;
     public String[] endMessages = {"Tough luck!", "Better luck next time!", "Bottoms up!", "Out of luck!", "Unfortunate!", "Hard luck!", "Drinking time!", "Yikes!", "Ouch!", "Bad break!", "Cheers!", "Down the hatch!", "Drink up!"};
 
-    Animation scale;
+    AnimationHandler animationHandler;
 
     Random random = new Random();
     private ValueAnimator animator = new ValueAnimator();
@@ -52,13 +52,13 @@ public class MainActivity extends GameActivity {
         current_random = starting_number = prev_random;
 
         //Animations
-        scale = AnimationUtils.loadAnimation(this, R.anim.scale);
+        animationHandler = new AnimationHandler(this);
     }
 
     //When the button is clicked this function is called
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextRandom(final View view){
-        view.startAnimation(scale);
+        animationHandler.buttonPressAnimation(view);
         SoundHandler.playSound(R.raw.pour);
         valid_click(view);
     }
@@ -118,7 +118,7 @@ public class MainActivity extends GameActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    createPopup("YOU LOSE!", "You have "+ number_of_sips + " sips", endMessages[(int)(Math.random()*endMessages.length)], "ANOTHER ROUND!");
+                    createPopup(R.string.popup_title, R.string.popup_sips, R.string.lose_button_text);
 
                     //Reset the values
                     current_random = prev_random = starting_number;
@@ -160,4 +160,9 @@ public class MainActivity extends GameActivity {
         v.startAnimation(anim);
     }
 
+    @Override
+    public void back(View view) {
+        animationHandler.buttonPressAnimation(view);
+        super.back(view);
+    }
 }

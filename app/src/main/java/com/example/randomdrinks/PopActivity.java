@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class PopActivity extends GameActivity {
 
+
     /**
      * Creates a new popup activity with custom
      * Strings as input.
@@ -27,10 +28,12 @@ public class PopActivity extends GameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop);
 
-        String message1 = getIntent().getStringExtra("TITLE_TEXT");
-        String message2 = getIntent().getStringExtra("SUB_TEXT");
-        String message3 = getIntent().getStringExtra("OPTIONAL_TEXT");
-        String buttonText = getIntent().getStringExtra("BUTTON_TEXT");
+        int message1 = getIntent().getIntExtra("TITLE_TEXT", R.string.empty_string);
+        int message2 = getIntent().getIntExtra("SUB_TEXT", R.string.empty_string);
+        int message3 = getIntent().getIntExtra("OPTIONAL_TEXT", R.string.empty_string);
+        int buttonText = getIntent().getIntExtra("BUTTON_TEXT", R.string.empty_string);
+        double widthPercentage = getIntent().getDoubleExtra("WIDTH", 0.8);
+        double heightPercentage = getIntent().getDoubleExtra("HEIGHT", 0.3);
 
         TextView tittleMessage, subMessage, optionalMessage;
         Button button;
@@ -49,7 +52,7 @@ public class PopActivity extends GameActivity {
         int height = dm.heightPixels;
 
         //Setting the popup size
-        getWindow().setLayout((int)(width*.8), (int) (height*.35));
+        getWindow().setLayout((int)(width*widthPercentage), (int) (height*heightPercentage));
 
         //Setting the popup position
         WindowManager.LayoutParams params = getWindow().getAttributes();
