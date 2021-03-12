@@ -15,7 +15,7 @@
     <string name="roll_button">Roll number</string>
     <!--Popup activity text -->
     <string name="popup_title">YOU LOSE!</string>
-    <string name="popup_sips">you have n sips</string>
+    <string name="popup_sips">you have %d sips</string>
     <string name="lose_button_text">Another round!</string>
 
     <!--=========================== SETUP MENU ============================ -->

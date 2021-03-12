@@ -39,8 +39,8 @@
 
     <TextView
         android:id="@+id/Optional_message"
-        android:layout_width="300dp"
-        android:layout_height="97dp"
+        android:layout_width="312dp"
+        android:layout_height="35dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/custom_font"
         android:lineSpacingExtra="10sp"

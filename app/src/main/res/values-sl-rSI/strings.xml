@@ -16,7 +16,7 @@
     <string name="roll_button">Naslednja številka</string>
     <!--Popup activity text -->
     <string name="popup_title">IZGUBILI STE!</string>
-    <string name="popup_sips">Imate n požirkov</string>
+    <string name="popup_sips">Imate %d požirkov</string>
     <string name="lose_button_text">Nova igra!</string>
 
     <!--=========================== SETUP MENU ============================ -->

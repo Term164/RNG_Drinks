@@ -48,10 +48,10 @@ public class SetupMenu extends GameActivity {
                     intent.putExtra("STARTING_NUMBER", starting_number);
                     startActivity(intent);
                 }else {
-                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4);
+                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4,0,0,0,0,0,65);
                 }
             }else {
-                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4);
+                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4, 0,0,0,0,0,65);
             }
         }catch (Exception e){
             createPopup(R.string.error_title, R.string.error_type,R.string.error_button);

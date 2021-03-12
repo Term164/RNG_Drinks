@@ -34,6 +34,13 @@ public class PopActivity extends GameActivity {
         int buttonText = getIntent().getIntExtra("BUTTON_TEXT", R.string.empty_string);
         double widthPercentage = getIntent().getDoubleExtra("WIDTH", 0.8);
         double heightPercentage = getIntent().getDoubleExtra("HEIGHT", 0.3);
+        int message1Offset = getIntent().getIntExtra("MSG1OFFSET", 0);
+        int message2Offset = getIntent().getIntExtra("MSG2OFFSET", 0);
+        int message3Offset = getIntent().getIntExtra("MSG3OFFSET", 0);
+        int buttonOffset = getIntent().getIntExtra("BTNOFFSET", 0);
+        int msg2Height = getIntent().getIntExtra("MSG1HEIGHT", 0);
+        int msg3Height = getIntent().getIntExtra("MSG2HEIGHT", 0);
+        int numberOfSips = getIntent().getIntExtra("SIPS", 0);
 
         TextView tittleMessage, subMessage, optionalMessage;
         Button button;
@@ -43,6 +50,14 @@ public class PopActivity extends GameActivity {
         subMessage = findViewById(R.id.Sub_message);
         optionalMessage = findViewById(R.id.Optional_message);
         button = findViewById(R.id.close_btn);
+
+        tittleMessage.setTranslationY(message1Offset);
+        subMessage.setTranslationY(message2Offset);
+        optionalMessage.setTranslationY(message3Offset);
+        button.setTranslationY(buttonOffset);
+
+        subMessage.setHeight(subMessage.getHeight() + msg2Height);
+        optionalMessage.setHeight(optionalMessage.getHeight() + msg3Height);
 
         //Getting the screen size
         DisplayMetrics dm = new DisplayMetrics();
@@ -62,9 +77,17 @@ public class PopActivity extends GameActivity {
 
         getWindow().setAttributes(params);
 
+        if (numberOfSips != 0){
+            System.out.println("test");
+            System.out.println(getString(message2));
+            subMessage.setText(String.format(getString(message2), numberOfSips));
+        } else {
+            System.out.println("test2");
+            subMessage.setText(message2);
+        }
+
         //setting the text
         tittleMessage.setText(message1);
-        subMessage.setText(message2);
         optionalMessage.setText(message3);
         button.setText(buttonText);
 

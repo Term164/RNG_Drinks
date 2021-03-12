@@ -118,7 +118,7 @@ public class MainActivity extends GameActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    createPopup(R.string.popup_title, R.string.popup_sips, R.string.lose_button_text);
+                    createPopup(R.string.popup_title, R.string.popup_sips, R.string.empty_string, R.string.lose_button_text, number_of_sips);
 
                     //Reset the values
                     current_random = prev_random = starting_number;
