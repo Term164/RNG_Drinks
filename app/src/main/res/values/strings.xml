@@ -39,5 +39,8 @@
     <string name="number_error">Please enter a number between 2 and a million for the starting number</string>
     <string name="error_button">Close</string>
     <string name="empty_string"></string>
+    <string name="how_to_play">How to play</string>
+    <string name="how_to_play_first">You start with a number of your choice, for example, let\'s say 150. The first player presses the button and the game will generate a random number between the starting number (150) and 1, the randomly generated number for example 67 will now be the new highest number.</string>
+    <string name="how_to_play_second">The next person who presses the \"roll number\" button will now get a randomly generated number between 67 and 1. the players continue going in circles pressing the button until someone reaches number 1. the player who rolls 1 has to drink as many sips as the number of times players had to roll a random number to get to 1.</string>
 
 </resources>

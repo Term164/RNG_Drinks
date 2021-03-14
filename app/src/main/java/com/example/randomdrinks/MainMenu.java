@@ -60,6 +60,18 @@ public class MainMenu extends GameActivity {
         },ANIMATION_DELAY);
     }
 
+    public void howToPlay(final View view){
+        SoundHandler.playSound(R.raw.button_push);
+        animationHandler.buttonPressAnimation(view);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                view.setAnimation(null);
+                //createPopup(R.string.how_to_play, R.string.how_to_play_first);
+            }
+        },ANIMATION_DELAY);
+    }
+
     //Open the settings window
     public void openSettings(final View view){
         SoundHandler.playSound(R.raw.button_push);

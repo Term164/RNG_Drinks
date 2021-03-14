@@ -40,5 +40,8 @@
     <string name="number_error">Vpišite števlio med 2 in milijon za začetno število</string>
     <string name="error_button">Zapri</string>
     <string name="empty_string">" "</string>
+    <string name="how_to_play">Pravila igre</string>
+    <string name="how_to_play_first">Igro začnemo z nekim poljubnim številom, npr. 150. Prvi igralec pritisne gumb in igra generira  naključno število med izbranim številom (150) in 1. Novo generirano naključno število npr. 67 bo sedaj novo najvišje število.</string>
+    <string name="how_to_play_second">Naslednja oseba, ki pritisne gumb bo sedaj generirala novo naključno število med 67 (ki je sedaj največje število) in 1. Igralci nato nadaljujejo igro v krogu in generirajo naključna števila, dokler nekdo dobi 1. Igralec, ki je dobil 1 mora narediti toliko požirkov kolikokrat je bilo potrebno pritisniti gumb, da je prišla enica.</string>
 
 </resources>

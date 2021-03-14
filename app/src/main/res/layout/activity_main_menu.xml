@@ -53,7 +53,25 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Title"
-        app:layout_constraintVertical_bias="0.198" />
+        app:layout_constraintVertical_bias="0.058" />
+
+    <Button
+        android:id="@+id/how_to_play_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/custom_font"
+        android:onClick="startGame"
+        android:text="@string/how_to_play"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/developer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title"
+        app:layout_constraintVertical_bias="0.212" />
 
     <Button
         android:id="@+id/settings_button"
