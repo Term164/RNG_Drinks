@@ -45,7 +45,7 @@ public class PopActivity extends GameActivity {
         TextView tittleMessage, subMessage, optionalMessage;
         Button button;
 
-        //Hooks
+        // Hooks
         tittleMessage = findViewById(R.id.Title_Message);
         subMessage = findViewById(R.id.Sub_message);
         optionalMessage = findViewById(R.id.Optional_message);
@@ -56,20 +56,23 @@ public class PopActivity extends GameActivity {
         optionalMessage.setTranslationY(message3Offset);
         button.setTranslationY(buttonOffset);
 
-        subMessage.setHeight(subMessage.getHeight() + msg2Height);
-        optionalMessage.setHeight(optionalMessage.getHeight() + msg3Height);
+        // Setting the new height
+        subMessage.getLayoutParams().height = subMessage.getLayoutParams().height + msg2Height;
+        optionalMessage.getLayoutParams().height = optionalMessage.getLayoutParams().height + msg3Height;
+        subMessage.setLayoutParams(subMessage.getLayoutParams());
+        optionalMessage.setLayoutParams(optionalMessage.getLayoutParams());
 
-        //Getting the screen size
+        // Getting the screen size
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        //Setting the popup size
+        // Setting the popup size
         getWindow().setLayout((int)(width*widthPercentage), (int) (height*heightPercentage));
 
-        //Setting the popup position
+        // Setting the popup position
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
@@ -78,20 +81,17 @@ public class PopActivity extends GameActivity {
         getWindow().setAttributes(params);
 
         if (numberOfSips != 0){
-            System.out.println("test");
-            System.out.println(getString(message2));
             subMessage.setText(String.format(getString(message2), numberOfSips));
         } else {
-            System.out.println("test2");
             subMessage.setText(message2);
         }
 
-        //setting the text
+        // Setting the text
         tittleMessage.setText(message1);
         optionalMessage.setText(message3);
         button.setText(buttonText);
 
-        //Setting the close button
+        // Setting the close button
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

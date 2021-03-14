@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,9 +18,17 @@ public class GameActivity extends AppCompatActivity {
 
     String currentLanguage;
     protected int layout;
+    protected int screenWidth, screenHeight;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+        //Getting the screen size
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        screenWidth = dm.widthPixels;
+        screenHeight = dm.heightPixels;
 
         // Load the selected language
         loadLocale();

@@ -40,6 +40,7 @@ public class SetupMenu extends GameActivity {
 
         String num_Of_Players = numberOFPlayers.getText().toString();
         String starting_number = startingNumber.getText().toString();
+        int heightOffset = (int) -(screenHeight*0.05);
         try {
             if (Integer.parseInt(num_Of_Players) >= 2 && Integer.parseInt(num_Of_Players) <= 50){
                 if (Integer.parseInt(starting_number) >= 2 && Integer.parseInt(starting_number) <= 1000000){
@@ -48,10 +49,11 @@ public class SetupMenu extends GameActivity {
                     intent.putExtra("STARTING_NUMBER", starting_number);
                     startActivity(intent);
                 }else {
-                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4,0,0,0,0,0,65);
+
+                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4, heightOffset,heightOffset,heightOffset,0,0,165);
                 }
             }else {
-                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4, 0,0,0,0,0,65);
+                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4, heightOffset,heightOffset,heightOffset,0,0,110);
             }
         }catch (Exception e){
             createPopup(R.string.error_title, R.string.error_type,R.string.error_button);
