@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/custom_font"
-        android:onClick="startGame"
+        android:onClick="howToPlay"
         android:text="@string/how_to_play"
         android:textAlignment="center"
         android:textSize="32sp"

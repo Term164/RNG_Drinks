@@ -75,7 +75,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SoundHandler.playBackgroundMusic();
+        if (layout != R.layout.activity_splash_screen) SoundHandler.playBackgroundMusic();
         hideSystemUI();
 
         // Checking if current activity language matches the selected language
@@ -100,7 +100,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     //Creates a popup Activity with all the messages
-    protected void createPopup(int message1, int message2, int message3, int buttonText, double width, double height, int offset1, int offset2, int offset3, int offset4, int height1, int height2){
+    protected void createPopup(int message1, int message2, int message3, int buttonText, double width, double height, int fontSize1, int fontSize2){
         Intent i = new Intent(getApplicationContext(), PopActivity.class);
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
@@ -108,12 +108,9 @@ public class GameActivity extends AppCompatActivity {
         i.putExtra("BUTTON_TEXT", buttonText);
         i.putExtra("WIDTH", width);
         i.putExtra("HEIGHT", height);
-        i.putExtra("MSG1OFFSET", offset1);
-        i.putExtra("MSG2OFFSET", offset2);
-        i.putExtra("MSG3OFFSET", offset3);
-        i.putExtra("BTNOFFSET", offset4);
-        i.putExtra("MSG1HEIGHT", height1);
-        i.putExtra("MSG2HEIGHT", height2);
+        i.putExtra("MSG2FONTSIZE", fontSize1);
+        i.putExtra("MSG3FONTSIZE", fontSize2);
+
         startActivity(i);
     }
 
@@ -123,6 +120,12 @@ public class GameActivity extends AppCompatActivity {
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
         i.putExtra("BUTTON_TEXT", buttonText);
+        startActivity(i);
+    }
+
+    protected void howToPlayWindow(){
+        Intent i = new Intent(getApplicationContext(), PopActivity.class);
+        i.putExtra("LAYOUT", R.layout.activity_how_to_play);
         startActivity(i);
     }
 

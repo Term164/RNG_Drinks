@@ -16,7 +16,7 @@ public class MainMenu extends GameActivity {
 
     //variables
     TextView title,developer;
-    Button playButton, settingsButton, leaderboardButton, exitButton;
+    Button playButton, howToPlayButton, settingsButton, leaderboardButton, exitButton;
     AnimationHandler animationHandler;
 
     @Override
@@ -34,6 +34,7 @@ public class MainMenu extends GameActivity {
         title = findViewById(R.id.Title);
         developer = findViewById(R.id.developer);
         playButton = findViewById(R.id.play_button);
+        howToPlayButton = findViewById(R.id.how_to_play_button);
         settingsButton = findViewById(R.id.settings_button);
         leaderboardButton = findViewById(R.id.achievements_button);
         exitButton = findViewById(R.id.exit_button);
@@ -41,9 +42,10 @@ public class MainMenu extends GameActivity {
         animationHandler.animate(title, R.anim.top_animation);
         animationHandler.animate(developer, R.anim.bottom_animation);
         animationHandler.animate(playButton, R.anim.left_animation, 1500);
-        animationHandler.animate(settingsButton, R.anim.left_animation, 2000);
-        animationHandler.animate(leaderboardButton, R.anim.left_animation, 2500);
-        animationHandler.animate(exitButton, R.anim.left_animation, 3000);
+        animationHandler.animate(howToPlayButton, R.anim.left_animation, 2000);
+        animationHandler.animate(settingsButton, R.anim.left_animation, 2500);
+        animationHandler.animate(leaderboardButton, R.anim.left_animation, 3000);
+        animationHandler.animate(exitButton, R.anim.left_animation, 3500);
     }
 
     //Start a new instance of the game with the saved settings
@@ -67,7 +69,7 @@ public class MainMenu extends GameActivity {
             @Override
             public void run() {
                 view.setAnimation(null);
-                //createPopup(R.string.how_to_play, R.string.how_to_play_first);
+                howToPlayWindow();
             }
         },ANIMATION_DELAY);
     }

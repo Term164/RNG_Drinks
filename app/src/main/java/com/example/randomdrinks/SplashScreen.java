@@ -29,6 +29,8 @@ public class SplashScreen extends GameActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
 
+        layout = R.layout.activity_splash_screen;
+
         SoundHandler.loadSounds(this);
 
         //Animations

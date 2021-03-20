@@ -12,66 +12,70 @@
         android:id="@+id/Sub_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="12dp"
+        android:autoText="false"
         android:fontFamily="@font/custom_font"
         android:lineSpacingExtra="5sp"
-        android:text="@string/popup_sips"
+        android:paddingLeft="30sp"
+        android:paddingRight="30sp"
+        android:text="@string/how_to_play_first"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/Optional_message"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title_Message" />
 
     <TextView
         android:id="@+id/Optional_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/custom_font"
         android:lineSpacingExtra="5sp"
+        android:paddingLeft="30sp"
+        android:paddingRight="30sp"
+        android:text="@string/how_to_play_second"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textIsSelectable="false"
-        android:textSize="25sp"
+        android:textSize="24sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629"
-        tools:text="Test" />
+        app:layout_constraintTop_toBottomOf="@+id/Sub_message" />
 
     <TextView
         android:id="@+id/Title_Message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/custom_font"
-        android:text="@string/popup_title"
+        android:text="@string/how_to_play"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="50sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/Sub_message"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/close_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/custom_font"
         android:text="Another round!"
         android:textSize="25sp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Optional_message" />
+        app:layout_constraintTop_toBottomOf="@+id/Optional_message"
+        app:layout_constraintVertical_bias="0.382" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -165,4 +165,10 @@ public class MainActivity extends GameActivity {
         animationHandler.buttonPressAnimation(view);
         super.back(view);
     }
+
+    public void show_rules(View view){
+        SoundHandler.playSound(R.raw.button_push);
+        animationHandler.buttonPressAnimation(view);
+        howToPlayWindow();
+    }
 }

@@ -31,6 +31,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/info_button"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/info_button"
+        android:onClick="show_rules"
+        android:rotation="0"
+        android:textColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/overlay" />
+
+    <Button
         android:id="@+id/generate_button"
         android:layout_width="252dp"
         android:layout_height="143dp"

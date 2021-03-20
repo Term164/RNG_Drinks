@@ -40,20 +40,21 @@ public class SetupMenu extends GameActivity {
 
         String num_Of_Players = numberOFPlayers.getText().toString();
         String starting_number = startingNumber.getText().toString();
-        int heightOffset = (int) -(screenHeight*0.05);
+        int players = Integer.parseInt(num_Of_Players);
+        int number = Integer.parseInt(starting_number);
         try {
             if (Integer.parseInt(num_Of_Players) >= 2 && Integer.parseInt(num_Of_Players) <= 50){
                 if (Integer.parseInt(starting_number) >= 2 && Integer.parseInt(starting_number) <= 1000000){
-                    Intent intent = new Intent(this, MainActivity.class);
-                    intent.putExtra("NUMBER_OF_PLAYERS", num_Of_Players);
-                    intent.putExtra("STARTING_NUMBER", starting_number);
+                    Intent intent = new Intent(this, PlayerSelect.class);
+                    intent.putExtra("NUMBER_OF_PLAYERS", players);
+                    intent.putExtra("STARTING_NUMBER", number);
                     startActivity(intent);
                 }else {
 
-                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4, heightOffset,heightOffset,heightOffset,0,0,165);
+                    createPopup(R.string.error_title, R.string.error_type, R.string.number_error, R.string.error_button, 0.8 ,0.4,0,25);
                 }
             }else {
-                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4, heightOffset,heightOffset,heightOffset,0,0,110);
+                createPopup(R.string.error_title, R.string.error_type, R.string.player_error, R.string.error_button, 0.8, 0.4,0, 25);
             }
         }catch (Exception e){
             createPopup(R.string.error_title, R.string.error_type,R.string.error_button);

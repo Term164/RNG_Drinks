@@ -38,7 +38,11 @@ public class SoundHandler {
 
     public static void playSound(int soundID){
         if (!soundMuted){
-            soundPool.play(soundPoolMap.get(soundID), volume, volume, 1,0,1f);
+            try {
+                soundPool.play(soundPoolMap.get(soundID), volume, volume, 1,0,1f);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -48,12 +52,20 @@ public class SoundHandler {
 
     public static void playBackgroundMusic(){
         if (!musicMuted){
-            backgroundMusic.start();
+            try {
+                backgroundMusic.start();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
     public static void pauseBackgroundMusic(){
-        backgroundMusic.pause();
+        try {
+            backgroundMusic.pause();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     // =========================== GETTERS AND SETTERS ==============================

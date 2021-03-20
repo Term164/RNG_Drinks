@@ -1,7 +1,9 @@
 package com.example.randomdrinks;
 
+import android.icu.util.MeasureUnit;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 public class PopActivity extends GameActivity {
 
+    AnimationHandler animationHandler;
 
     /**
      * Creates a new popup activity with custom
@@ -28,39 +31,23 @@ public class PopActivity extends GameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop);
 
+        animationHandler = new AnimationHandler(this);
+
+        int layout = getIntent().getIntExtra("LAYOUT", R.layout.activity_pop);
         int message1 = getIntent().getIntExtra("TITLE_TEXT", R.string.empty_string);
         int message2 = getIntent().getIntExtra("SUB_TEXT", R.string.empty_string);
         int message3 = getIntent().getIntExtra("OPTIONAL_TEXT", R.string.empty_string);
-        int buttonText = getIntent().getIntExtra("BUTTON_TEXT", R.string.empty_string);
+        int buttonText = getIntent().getIntExtra("BUTTON_TEXT", R.string.exit_button);
         double widthPercentage = getIntent().getDoubleExtra("WIDTH", 0.8);
         double heightPercentage = getIntent().getDoubleExtra("HEIGHT", 0.3);
-        int message1Offset = getIntent().getIntExtra("MSG1OFFSET", 0);
-        int message2Offset = getIntent().getIntExtra("MSG2OFFSET", 0);
-        int message3Offset = getIntent().getIntExtra("MSG3OFFSET", 0);
-        int buttonOffset = getIntent().getIntExtra("BTNOFFSET", 0);
-        int msg2Height = getIntent().getIntExtra("MSG1HEIGHT", 0);
-        int msg3Height = getIntent().getIntExtra("MSG2HEIGHT", 0);
+        int msg2FontSize = getIntent().getIntExtra("MSG2FONTSIZE", 0);
+        int msg3FontSize = getIntent().getIntExtra("MSG3FONTSIZE", 0);
         int numberOfSips = getIntent().getIntExtra("SIPS", 0);
 
-        TextView tittleMessage, subMessage, optionalMessage;
-        Button button;
+        setContentView(layout);
+        final Button button;
 
-        // Hooks
-        tittleMessage = findViewById(R.id.Title_Message);
-        subMessage = findViewById(R.id.Sub_message);
-        optionalMessage = findViewById(R.id.Optional_message);
         button = findViewById(R.id.close_btn);
-
-        tittleMessage.setTranslationY(message1Offset);
-        subMessage.setTranslationY(message2Offset);
-        optionalMessage.setTranslationY(message3Offset);
-        button.setTranslationY(buttonOffset);
-
-        // Setting the new height
-        subMessage.getLayoutParams().height = subMessage.getLayoutParams().height + msg2Height;
-        optionalMessage.getLayoutParams().height = optionalMessage.getLayoutParams().height + msg3Height;
-        subMessage.setLayoutParams(subMessage.getLayoutParams());
-        optionalMessage.setLayoutParams(optionalMessage.getLayoutParams());
 
         // Getting the screen size
         DisplayMetrics dm = new DisplayMetrics();
@@ -69,8 +56,40 @@ public class PopActivity extends GameActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        // Setting the popup size
-        getWindow().setLayout((int)(width*widthPercentage), (int) (height*heightPercentage));
+        if (layout == R.layout.activity_how_to_play){
+
+            // Setting the popup size
+            getWindow().setLayout((int)(width*0.9), (int) (height*0.9));
+        }
+        else {
+
+            // Setting the popup size
+            getWindow().setLayout((int)(width*widthPercentage), (int) (height*heightPercentage));
+
+            TextView tittleMessage, subMessage, optionalMessage;
+
+            // Hooks
+            tittleMessage = findViewById(R.id.Title_Message);
+            subMessage = findViewById(R.id.Sub_message);
+            optionalMessage = findViewById(R.id.Optional_message);
+
+
+            // Setting the text font size
+            if (msg2FontSize != 0) subMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, msg2FontSize);
+            if (msg3FontSize != 0) optionalMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, msg3FontSize);
+
+            if (numberOfSips != 0){
+                subMessage.setText(String.format(getString(message2), numberOfSips));
+            } else {
+                subMessage.setText(message2);
+            }
+
+            // Setting the text
+            tittleMessage.setText(message1);
+            optionalMessage.setText(message3);
+
+        }
+
 
         // Setting the popup position
         WindowManager.LayoutParams params = getWindow().getAttributes();
@@ -80,21 +99,14 @@ public class PopActivity extends GameActivity {
 
         getWindow().setAttributes(params);
 
-        if (numberOfSips != 0){
-            subMessage.setText(String.format(getString(message2), numberOfSips));
-        } else {
-            subMessage.setText(message2);
-        }
-
-        // Setting the text
-        tittleMessage.setText(message1);
-        optionalMessage.setText(message3);
         button.setText(buttonText);
 
         // Setting the close button
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SoundHandler.playSound(R.raw.button_push);
+                animationHandler.animate(button, R.anim.scale);
                 finish();
             }
         });
