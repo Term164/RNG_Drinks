@@ -28,6 +28,7 @@ public class SoundHandler {
     public static void loadSounds(Context context){
         intro = MediaPlayer.create(context, R.raw.intro);
         backgroundMusic = MediaPlayer.create(context, R.raw.dance);
+        backgroundMusic.setLooping(true);
 
         AudioAttributes attributes = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build();
         soundPool = new SoundPool.Builder().setAudioAttributes(attributes).build();
@@ -52,20 +53,12 @@ public class SoundHandler {
 
     public static void playBackgroundMusic(){
         if (!musicMuted){
-            try {
-                backgroundMusic.start();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+            backgroundMusic.start();
         }
     }
 
     public static void pauseBackgroundMusic(){
-        try {
-            backgroundMusic.pause();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        backgroundMusic.pause();
     }
 
     // =========================== GETTERS AND SETTERS ==============================
@@ -85,4 +78,5 @@ public class SoundHandler {
     public static void setSoundMuted(boolean soundMuted) {
         SoundHandler.soundMuted = soundMuted;
     }
+
 }

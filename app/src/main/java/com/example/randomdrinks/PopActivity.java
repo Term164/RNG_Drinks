@@ -1,6 +1,5 @@
 package com.example.randomdrinks;
 
-import android.icu.util.MeasureUnit;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Random;
 
 public class PopActivity extends GameActivity {
 
@@ -43,6 +44,7 @@ public class PopActivity extends GameActivity {
         int msg2FontSize = getIntent().getIntExtra("MSG2FONTSIZE", 0);
         int msg3FontSize = getIntent().getIntExtra("MSG3FONTSIZE", 0);
         int numberOfSips = getIntent().getIntExtra("SIPS", 0);
+        String name = getIntent().getStringExtra("NAME");
 
         setContentView(layout);
         final Button button;
@@ -79,15 +81,24 @@ public class PopActivity extends GameActivity {
             if (msg3FontSize != 0) optionalMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, msg3FontSize);
 
             if (numberOfSips != 0){
-                subMessage.setText(String.format(getString(message2), numberOfSips));
-            } else {
+                subMessage.setText(String.format(getString(message2), name, numberOfSips));
+            } else if (numberOfSips == 1){
+                subMessage.setText(String.format(getString(R.string.popup_shot),name));
+            }
+            else {
                 subMessage.setText(message2);
             }
 
             // Setting the text
             tittleMessage.setText(message1);
-            optionalMessage.setText(message3);
-
+            if (message3 == R.string.messages){
+                String[] endMessages = getString(R.string.messages).split(":");
+                Random random = new Random();
+                String randomMessage = endMessages[random.nextInt(endMessages.length)];
+                optionalMessage.setText(randomMessage);
+            }else {
+                optionalMessage.setText(message3);
+            }
         }
 
 

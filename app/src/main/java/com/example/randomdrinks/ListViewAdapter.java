@@ -31,12 +31,12 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return list.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return list.size();
     }
 
     // Setting the custom list element here
@@ -46,20 +46,21 @@ public class ListViewAdapter extends BaseAdapter {
         // If the view is null we set up the custom list Item otherwise we set the holder to the
         // previous item that is stored. We then set the text of the element and the tag and id so
         // we can get the information later.
-        System.out.println("outer: " + position);
+        convertView = null;
 
         if (convertView == null){
-            System.out.println("inner " + position);
             holder = new ViewHolder();
             mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.list_item, null);
+            convertView = mInflater.inflate(R.layout.list_item, parent, false);
 
-            holder.caption = (EditText) convertView.findViewById(R.id.player);
+            holder.caption = convertView.findViewById(R.id.player);
             holder.caption.setTag(position);
             holder.caption.setText(list.get(position));
 
             convertView.setTag(holder);
-        }else holder = (ViewHolder) convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
         int tag_position = (Integer) holder.caption.getTag();
         holder.caption.setId(tag_position);

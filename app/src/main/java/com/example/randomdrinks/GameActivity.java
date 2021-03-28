@@ -16,6 +16,7 @@ import java.util.Locale;
 //A special activity modified for game functions
 public class GameActivity extends AppCompatActivity {
 
+    protected boolean newActivity = false;
     String currentLanguage;
     protected int layout;
     protected int screenWidth, screenHeight;
@@ -64,20 +65,22 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        SoundHandler.pauseBackgroundMusic();
+        if (!newActivity) SoundHandler.pauseBackgroundMusic();
+
         // Getting the current language
         SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
         currentLanguage = prefs.getString("My_Lang", "");
     }
-
     // Checking the selected language and the previously saved language for reference
     // If the language does not match reload the layout
     @Override
     protected void onResume() {
         super.onResume();
-        if (layout != R.layout.activity_splash_screen) SoundHandler.playBackgroundMusic();
+        SoundHandler.playBackgroundMusic();
         hideSystemUI();
 
+        // Reset the sound flag every time the activity is shown
+        newActivity = false;
         // Checking if current activity language matches the selected language
         // Getting the selected language
         SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
@@ -88,19 +91,22 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    //Creates a popup Activity with all the messages
-    protected void createPopup(int message1, int message2, int message3, int buttonText, int sips){
+    // Creates a popup Activity with all the messages
+    protected void createPopup(int message1, int message2, int message3, int buttonText, int sips, String name){
+        newActivity = true;
         Intent i = new Intent(getApplicationContext(), PopActivity.class);
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
         i.putExtra("OPTIONAL_TEXT", message3);
         i.putExtra("BUTTON_TEXT", buttonText);
         i.putExtra("SIPS", sips);
+        i.putExtra("NAME", name);
         startActivity(i);
     }
 
-    //Creates a popup Activity with all the messages
+    // Creates a popup Activity with all the messages
     protected void createPopup(int message1, int message2, int message3, int buttonText, double width, double height, int fontSize1, int fontSize2){
+        newActivity = true;
         Intent i = new Intent(getApplicationContext(), PopActivity.class);
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
@@ -116,6 +122,7 @@ public class GameActivity extends AppCompatActivity {
 
     // Creates a popup Activity without the optional message
     protected void createPopup(int message1, int message2, int buttonText){
+        newActivity = true;
         Intent i = new Intent(getApplicationContext(), PopActivity.class);
         i.putExtra("TITLE_TEXT", message1);
         i.putExtra("SUB_TEXT", message2);
@@ -162,13 +169,10 @@ public class GameActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                newActivity = true;
                 view.setAnimation(null);
                 finish();
             }
         },200);
-
     }
-
 }
-
-

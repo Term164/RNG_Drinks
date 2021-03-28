@@ -16,7 +16,7 @@
     <string name="roll_button">Naslednja številka</string>
     <!--Popup activity text -->
     <string name="popup_title">IZGUBILI STE!</string>
-    <string name="popup_sips">Imate %d požirkov</string>
+    <string name="popup_sips">%s ima %d požirke</string>
     <string name="lose_button_text">Nova igra!</string>
 
     <!--=========================== SETUP MENU ============================ -->
@@ -45,5 +45,8 @@
     <string name="how_to_play_second">Naslednja oseba, ki pritisne gumb bo sedaj generirala novo naključno število med 67 (ki je sedaj največje število) in 1. Igralci nato nadaljujejo igro v krogu in generirajo naključna števila, dokler nekdo dobi 1. Igralec, ki je dobil 1 mora narediti toliko požirkov kolikokrat je bilo potrebno pritisniti gumb, da je prišla enica.</string>
     <string name="player_select">Igralci</string>
     <string name="player_list_element">Igralec</string>
+    <string name="messages">Škoda!:Več sreče prihodnjič!:Ah Škoda!:Kar pogumno!:Na zdravje!</string>
+    <string name="current_player">Na vrsti:</string>
+    <string name="popup_shot">%s popij kozarček</string>
 
 </resources>

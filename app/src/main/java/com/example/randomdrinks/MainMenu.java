@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,6 +24,7 @@ public class MainMenu extends GameActivity {
         layout = R.layout.activity_main_menu;
         setContentView(layout);
         SoundHandler.playBackgroundMusic();
+
 
         //Animation handler
         animationHandler = new AnimationHandler(this);
@@ -56,6 +55,7 @@ public class MainMenu extends GameActivity {
             @Override
             public void run() {
                 view.setAnimation(null);
+                newActivity = true;
                 Intent intent = new Intent(MainMenu.this, SetupMenu.class);
                 startActivity(intent);
             }
@@ -82,6 +82,7 @@ public class MainMenu extends GameActivity {
             @Override
             public void run() {
                 view.setAnimation(null);
+                newActivity = true;
                 Intent intent = new Intent(MainMenu.this, SettingsActivity.class);
                 startActivity(intent);
             }
@@ -96,6 +97,7 @@ public class MainMenu extends GameActivity {
             @Override
             public void run() {
                 view.setAnimation(null);
+                newActivity = true;
                 Intent intent = new Intent(MainMenu.this, AchievementsActivity.class);
                 startActivity(intent);
             }
