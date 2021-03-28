@@ -197,11 +197,13 @@ public class MainActivity extends GameActivity {
     // ============================= AD LOGIC ===============================
     private void loadAd(){
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest, new InterstitialAdLoadCallback(){
+        InterstitialAd.load(this, "ca-app-pub-3029112169347935/6632997356", adRequest, new InterstitialAdLoadCallback(){
             @Override
             public void onAdLoaded(@NonNull InterstitialAd InterstitialAd) {
                 mInterstitialAd = InterstitialAd;
                 Log.i("loadAd", "onAdLoaded");
+                // AdMob changes the config file so we have to reload the locale language
+                loadLocale();
             }
 
             @Override

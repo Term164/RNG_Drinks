@@ -23,10 +23,12 @@ public class GameActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
         //Getting the screen size
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+
+
 
         screenWidth = dm.widthPixels;
         screenHeight = dm.heightPixels;
@@ -78,6 +80,7 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         SoundHandler.playBackgroundMusic();
         hideSystemUI();
+
 
         // Reset the sound flag every time the activity is shown
         newActivity = false;
@@ -143,8 +146,11 @@ public class GameActivity extends AppCompatActivity {
         Locale.setDefault(locale);
         Resources resources = this.getResources();
         Configuration config = resources.getConfiguration();
-        config.setLocale(locale);
+
+        config.locale = locale;
         resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+
 
         // Saving the new language preferences
         SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
@@ -175,4 +181,5 @@ public class GameActivity extends AppCompatActivity {
             }
         },200);
     }
+
 }

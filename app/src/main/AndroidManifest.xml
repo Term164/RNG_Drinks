@@ -15,7 +15,7 @@
         <!-- My interstitial ID:  ca-app-pub-3029112169347935/6632997356 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3029112169347935~1733106035"/>
 
         <activity android:name=".PlayerSelect"
             android:screenOrientation="portrait"/>

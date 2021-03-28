@@ -40,7 +40,7 @@ public class PopActivity extends GameActivity {
         int message3 = getIntent().getIntExtra("OPTIONAL_TEXT", R.string.empty_string);
         int buttonText = getIntent().getIntExtra("BUTTON_TEXT", R.string.exit_button);
         double widthPercentage = getIntent().getDoubleExtra("WIDTH", 0.8);
-        double heightPercentage = getIntent().getDoubleExtra("HEIGHT", 0.3);
+        double heightPercentage = getIntent().getDoubleExtra("HEIGHT", 0.35);
         int msg2FontSize = getIntent().getIntExtra("MSG2FONTSIZE", 0);
         int msg3FontSize = getIntent().getIntExtra("MSG3FONTSIZE", 0);
         int numberOfSips = getIntent().getIntExtra("SIPS", 0);
